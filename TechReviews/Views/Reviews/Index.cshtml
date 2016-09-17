@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TechReviews.Models.Review>
+
+    @{
+        ViewBag.Title = "Reviews";
+    }
+
+    <h2>Reviews</h2>
+
+    <p class="btn btn-lg"> @Html.ActionLink("Write Your Review", "Create") </p>
+
+    <section class="container">
+        <div class="row">
+            @foreach (var item in Model) { <!--Use razor to create a bootstrap container > row > column design for each review-->
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 review">
+                <div class="inner">
+                    <p class="datetime">@Html.DisplayFor(modelItem => item.PublishDate)</p>
+                    <h1 class="title">@Html.DisplayFor(modelItem => item.Title)</h1>
+                    <p class="content">@Html.DisplayFor(modelItem => item.Content)</p>
+                    <div class="category btn btn-lg">All @Html.DisplayFor(modelItem => item.Category.Name) Reviews</div>
+                    <div class="action-links">
+                        <!--Need to find a solution for displaying action links as a button only and not a traditional link-->
+                        @Html.ActionLink("Edit", "Edit", "Reviews", new { id = item.ID }, new {@class = "btn btn-default"})
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Details", "Details", "Reviews", new { id = item.ID }, new { @class = "btn details-button" })
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </section>

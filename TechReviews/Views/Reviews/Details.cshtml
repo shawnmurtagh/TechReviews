@@ -1,0 +1,30 @@
+﻿@model TechReviews.Models.Review
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+
+<div class="row">
+        <div class="col-xs-12  review"> <!--Details page has same look/feel as review page, but more spread out-->
+            <div class="inner">
+                <p class="datetime">@Html.DisplayFor(model => model.PublishDate)</p>
+                <h1 class="title">@Html.DisplayFor(model => model.Title)</h1>
+                <p class="content">@Html.DisplayFor(model => model.Content)</p>
+                <div class="btn btn-lg">@Html.DisplayFor(model => model.Category.Name)</div>
+                <div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+</div>
+
+           
